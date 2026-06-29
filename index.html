@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Amazon Prime Day 2026 Live Tracker &amp; Insights | Canopy Management</title>
+<meta name="description" content="Canopy Management's Amazon Prime Day 2026 Tracker: a live read on orders, spend, top products, who shopped, and what they thought of the deals, plus how to win your next Prime Day." />
+<link rel="icon" href="assets/canopy-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   Canopy Management — Prime Day 2026 Live Tracker
+   Structural replica of numerator.com/prime-day, rebranded.
+   Bright Canopy green hero, white data sections, gold accent dot,
+   arched media, rounded pills. Figtree + Fraunces.
+   ============================================================ */
+:root{
+  --green:      #1fbf4d;   /* Canopy bright hero green (lime-forward) */
+  --green-2:    #46cf5c;
+  --green-deep: #1c5a2c;
+  --green-ink:  #143f20;
+  --leaf:       #8cc63f;
+  --leaf-2:     #a9d96a;
+  --gold:       #e6b84a;   /* accent dot (Numerator yellow -> Canopy gold) */
+  --gold-2:     #f0c95f;
+  --ink:        #1b2620;
+  --ink-2:      #36433a;
+  --body:       #55615a;
+  --body-dim:   #8a9389;
+  --paper:      #ffffff;
+  --paper-2:    #f3f7f0;   /* soft green-tinted section */
+  --paper-3:    #eef2ea;
+  --card:       #ffffff;
+  --line:       rgba(20,40,26,.10);
+  --line-2:     rgba(20,40,26,.06);
+  --shadow:     0 24px 60px -28px rgba(20,60,32,.30);
+  --shadow-sm:  0 12px 32px -18px rgba(20,60,32,.34);
+  --sans:  "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Fraunces", Georgia, serif;
+  --maxw: 1180px;
+}
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{ font-family:var(--sans); color:var(--body); background:var(--paper); line-height:1.6; font-size:18px; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+h1,h2,h3,h4{ color:var(--ink); font-weight:800; line-height:1.04; letter-spacing:-.02em; }
+strong,b{ color:var(--ink); font-weight:700; }
+a{ color:var(--green-deep); text-decoration:none; }
+::selection{ background:rgba(140,198,63,.35); }
+.wrap{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
+section{ position:relative; }
+.reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal.in{ opacity:1; transform:none; }
+.reveal.d1{ transition-delay:.08s;} .reveal.d2{ transition-delay:.16s;} .reveal.d3{ transition-delay:.24s;} .reveal.d4{ transition-delay:.32s;}
+.eyebrow{ display:inline-flex; align-items:center; gap:11px; font-size:13px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; color:var(--green); margin-bottom:18px; }
+.eyebrow .dot{ width:10px; height:10px; border-radius:50%; background:var(--gold); }
+
+/* ---------- NAV ---------- */
+.nav{ position:sticky; top:0; z-index:100; background:rgba(255,255,255,.94); backdrop-filter:blur(12px); border-bottom:1px solid transparent; transition:border-color .25s, box-shadow .25s; }
+.nav.scrolled{ border-color:var(--line); box-shadow:0 6px 24px -16px rgba(20,60,32,.4); }
+.nav .row{ display:flex; align-items:center; justify-content:space-between; padding:15px 32px; max-width:1320px; margin:0 auto; }
+.nav .brand img{ height:32px; display:block; }
+.nav .menu{ display:flex; gap:4px; }
+.nav .menu a{ color:var(--ink-2); font-size:14.5px; font-weight:600; padding:9px 14px; border-radius:9px; transition:.2s; }
+.nav .menu a:hover{ color:var(--green-deep); background:var(--paper-2); }
+.nav .right{ display:flex; align-items:center; gap:10px; }
+.btn{ display:inline-flex; align-items:center; gap:9px; font-family:var(--sans); font-weight:700; cursor:pointer; border:none; transition:.22s; white-space:nowrap; }
+.btn .arr{ transition:transform .2s; }
+.btn:hover .arr{ transform:translateX(4px); }
+.btn-green{ background:var(--green); color:#fff; padding:11px 20px; border-radius:11px; font-size:14.5px; }
+.btn-green:hover{ background:var(--green-deep); transform:translateY(-1px); box-shadow:var(--shadow-sm); }
+.btn-gold{ background:var(--gold); color:#3a2c08; padding:15px 28px; border-radius:13px; font-size:16px; }
+.btn-gold:hover{ background:var(--gold-2); transform:translateY(-2px); box-shadow:0 16px 34px -16px rgba(120,90,10,.5); }
+.btn-cream{ background:#fff; color:var(--green-deep); padding:15px 28px; border-radius:13px; font-size:16px; }
+.btn-cream:hover{ transform:translateY(-2px); box-shadow:0 16px 34px -16px rgba(10,40,18,.45); }
+.btn-deep{ background:var(--green-deep); color:#eaf5e6; padding:15px 28px; border-radius:13px; font-size:16px; }
+.btn-deep:hover{ background:var(--green-ink); transform:translateY(-2px); box-shadow:var(--shadow-sm); }
+.btn-ghost{ background:transparent; color:#eaf5e6; border:1.5px solid rgba(255,255,255,.4); padding:13.5px 26px; border-radius:13px; font-size:16px; }
+.btn-ghost:hover{ background:rgba(255,255,255,.12); }
+
+/* ---------- HERO ---------- */
+.hero{ background:var(--green); color:#fff; position:relative; overflow:hidden; padding-bottom:90px; }
+.hero::after{ content:""; position:absolute; inset:0; background:radial-gradient(70% 60% at 80% 0%, rgba(255,255,255,.10), transparent 60%); pointer-events:none; }
+.hero .arch{ height:300px; margin:0 auto; max-width:1180px; border-bottom-left-radius:280px; border-bottom-right-radius:280px; overflow:hidden; position:relative;
+  background:linear-gradient(150deg, #2a7d3a 0%, #1c5a2c 60%, #14401f 100%); }
+.hero .arch::before{ content:""; position:absolute; inset:0; background:
+  radial-gradient(40% 70% at 78% 30%, rgba(140,198,63,.28), transparent 60%),
+  radial-gradient(30% 50% at 18% 80%, rgba(230,184,74,.20), transparent 60%); }
+.hero .arch .mk{ position:absolute; right:6%; top:50%; transform:translateY(-50%); width:300px; opacity:.16; }
+.hero .arch .tagpill{ position:absolute; left:50%; top:52%; transform:translate(-50%,-50%); display:inline-flex; align-items:center; gap:12px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.28); padding:12px 24px; border-radius:100px; font-size:14px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#eaf5e6; backdrop-filter:blur(4px); }
+.hero .arch .tagpill .d{ width:9px; height:9px; border-radius:50%; background:var(--gold); box-shadow:0 0 12px var(--gold); }
+.hero .htext{ text-align:center; padding:62px 24px 0; position:relative; z-index:2; }
+.hero h1{ color:#fff; font-size:clamp(60px, 12vw, 150px); font-weight:900; letter-spacing:-.03em; line-height:.9; }
+.hero .sub{ display:inline-flex; align-items:center; gap:14px; margin-top:22px; font-size:15px; font-weight:800; letter-spacing:.24em; text-transform:uppercase; color:#d6efc4; }
+.hero .sub .line{ width:40px; height:2px; background:var(--gold); }
+.hero .lead{ max-width:760px; margin:26px auto 0; font-size:18.5px; color:#e7f4e1; line-height:1.6; }
+.hero .lead b{ color:#fff; }
+.hero .hcta{ margin-top:36px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+.hero .pillrow{ margin-top:42px; display:flex; justify-content:center; }
+.hero .pillshape{ width:min(560px,86%); height:84px; border:2px solid rgba(255,255,255,.35); border-radius:100px; position:relative; }
+.hero .pillshape .gold{ position:absolute; right:-18px; top:50%; transform:translateY(-50%); width:74px; height:74px; border-radius:50%; background:var(--gold); box-shadow:0 14px 40px -12px rgba(230,184,74,.7); }
+.hero .pillshape .lab{ position:absolute; left:32px; top:50%; transform:translateY(-50%); font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#d6efc4; }
+
+/* ---------- HIGHLIGHTS ---------- */
+.highlights{ background:var(--paper); margin-top:-50px; position:relative; z-index:5; }
+.hl-card-wrap{ background:#fff; border-radius:26px; box-shadow:var(--shadow); padding:14px; }
+.hl-grid{ display:grid; grid-template-columns:repeat(4,1fr); }
+.hl{ padding:34px 30px; text-align:center; border-right:1px solid var(--line-2); }
+.hl:last-child{ border-right:none; }
+.hl .n{ font-family:var(--serif); font-size:clamp(38px,4.6vw,56px); font-weight:700; color:var(--green-deep); line-height:1; letter-spacing:-.02em; }
+.hl .l{ font-size:14px; font-weight:700; color:var(--ink-2); margin-top:12px; }
+.hl .s{ font-size:12.5px; color:var(--body-dim); margin-top:4px; }
+.hl-note{ text-align:center; font-size:13px; color:var(--body-dim); margin-top:18px; }
+
+/* ---------- DATA SECTIONS ---------- */
+.dsec{ padding:92px 0; }
+.dsec.tint{ background:var(--paper-2); }
+.dgrid{ display:grid; grid-template-columns:1fr 1fr; gap:54px; align-items:center; }
+.dgrid.rev .copy{ order:2; }
+.dsec h2{ font-size:clamp(30px,4.4vw,46px); max-width:16ch; }
+.dsec .copy p{ font-size:17.5px; color:var(--body); margin-top:20px; line-height:1.62; max-width:54ch; }
+.dsec .copy p b{ color:var(--ink); }
+.dsec .src{ font-size:12.5px; color:var(--body-dim); margin-top:18px; }
+
+/* viz: comparison bars */
+.viz{ background:#fff; border:1px solid var(--line); border-radius:22px; padding:34px 34px; box-shadow:var(--shadow-sm); }
+.cmp{ margin-bottom:26px; }
+.cmp:last-child{ margin-bottom:0; }
+.cmp .ct{ font-size:14px; font-weight:700; color:var(--ink-2); margin-bottom:12px; display:flex; justify-content:space-between; }
+.cmp .ct .down{ color:var(--green); font-weight:700; font-size:13px; }
+.bar{ display:flex; align-items:center; gap:14px; margin-bottom:10px; }
+.bar .yr{ font-size:12px; font-weight:800; color:var(--body-dim); width:42px; }
+.bar .track{ flex:1; height:30px; background:var(--paper-3); border-radius:9px; overflow:hidden; }
+.bar .fill{ height:100%; border-radius:9px; width:0; transition:width 1.1s cubic-bezier(.2,.7,.2,1); display:flex; align-items:center; justify-content:flex-end; padding-right:12px; }
+.bar.now .fill{ background:linear-gradient(90deg, var(--green-2), var(--green)); }
+.bar.prev .fill{ background:#c9d6c4; }
+.bar .fill .v{ font-family:var(--serif); font-size:15px; font-weight:700; color:#fff; }
+.bar.prev .fill .v{ color:#5c6a57; }
+
+/* price distribution */
+.dist .row{ display:flex; align-items:center; gap:16px; margin-bottom:16px; }
+.dist .row .lab{ width:120px; font-size:14px; font-weight:700; color:var(--ink-2); }
+.dist .row .track{ flex:1; height:26px; background:var(--paper-3); border-radius:8px; overflow:hidden; }
+.dist .row .fill{ height:100%; width:0; background:linear-gradient(90deg, var(--leaf), var(--green)); border-radius:8px; transition:width 1.1s cubic-bezier(.2,.7,.2,1); }
+.dist .row .pct{ width:54px; text-align:right; font-family:var(--serif); font-weight:700; color:var(--green-deep); }
+.bigstat{ display:flex; gap:20px; flex-wrap:wrap; margin-top:24px; }
+.bigstat .b{ flex:1; min-width:150px; background:var(--paper-2); border-radius:16px; padding:22px; }
+.bigstat .b .n{ font-family:var(--serif); font-size:34px; font-weight:700; color:var(--green-deep); line-height:1; }
+.bigstat .b .l{ font-size:13.5px; color:var(--ink-2); margin-top:8px; font-weight:600; }
+
+/* top items list */
+.toplist{ list-style:none; }
+.toplist li{ display:flex; align-items:center; gap:16px; padding:16px 0; border-top:1px solid var(--line); }
+.toplist li:first-child{ border-top:none; }
+.toplist li .rk{ width:38px; height:38px; flex:0 0 auto; border-radius:50%; background:var(--green-deep); color:#eaf5e6; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:15px; }
+.toplist li .nm{ font-size:17px; font-weight:700; color:var(--ink); }
+.chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+.chip{ font-size:13.5px; font-weight:700; color:var(--green-deep); background:rgba(140,198,63,.16); border:1px solid rgba(60,132,63,.2); padding:8px 15px; border-radius:100px; }
+
+/* persona card */
+.persona{ background:linear-gradient(150deg, var(--green-deep), var(--green-ink)); color:#eaf5e6; border-radius:24px; padding:40px 38px; position:relative; overflow:hidden; box-shadow:var(--shadow); }
+.persona::after{ content:""; position:absolute; right:-50px; bottom:-60px; width:220px; height:220px; border-radius:50%; background:rgba(140,198,63,.14); }
+.persona .who{ font-size:13px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--leaf-2); margin-bottom:16px; }
+.persona h3{ color:#fff; font-size:30px; line-height:1.15; position:relative; z-index:2; }
+.persona .traits{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; position:relative; z-index:2; }
+.persona .traits span{ background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.22); padding:9px 16px; border-radius:100px; font-size:14px; font-weight:700; color:#eaf5e6; }
+.statpair{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:0; }
+.statpair .sp{ background:#fff; border:1px solid var(--line); border-radius:18px; padding:26px 20px; text-align:center; box-shadow:var(--shadow-sm); }
+.statpair .sp .n{ font-family:var(--serif); font-size:40px; font-weight:700; color:var(--green-deep); line-height:1; }
+.statpair .sp .l{ font-size:13px; color:var(--ink-2); margin-top:10px; font-weight:600; }
+
+/* satisfaction donut */
+.donutwrap{ display:flex; align-items:center; gap:30px; flex-wrap:wrap; }
+.donut{ --p:59; width:200px; height:200px; border-radius:50%; flex:0 0 auto;
+  background:conic-gradient(var(--green) calc(var(--p)*1%), var(--paper-3) 0);
+  display:flex; align-items:center; justify-content:center; position:relative; }
+.donut::before{ content:""; position:absolute; inset:24px; border-radius:50%; background:#fff; }
+.donut .c{ position:relative; z-index:2; text-align:center; }
+.donut .c .n{ font-family:var(--serif); font-size:46px; font-weight:700; color:var(--green-deep); line-height:1; }
+.donut .c .l{ font-size:12px; color:var(--body-dim); font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin-top:4px; }
+.compete{ margin-top:10px; }
+.compete .r{ display:flex; align-items:center; gap:14px; margin-bottom:14px; }
+.compete .r .nm{ width:120px; font-size:14px; font-weight:700; color:var(--ink-2); }
+.compete .r .track{ flex:1; height:24px; background:var(--paper-3); border-radius:8px; overflow:hidden; }
+.compete .r .fill{ height:100%; width:0; border-radius:8px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transition:width 1.1s cubic-bezier(.2,.7,.2,1); }
+.compete .r .pct{ width:48px; text-align:right; font-family:var(--serif); font-weight:700; color:var(--ink); }
+
+/* section heading center */
+.sec-center{ text-align:center; max-width:60ch; margin:0 auto 46px; }
+.sec-center h2{ font-size:clamp(30px,4.4vw,46px); }
+.sec-center p{ font-size:18px; color:var(--body); margin-top:16px; }
+
+/* resources cards */
+.rescards{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.res{ background:#fff; border:1px solid var(--line); border-radius:20px; overflow:hidden; box-shadow:var(--shadow-sm); transition:transform .3s, box-shadow .3s; display:flex; flex-direction:column; }
+.res:hover{ transform:translateY(-5px); box-shadow:var(--shadow); }
+.res .top{ height:140px; background:linear-gradient(140deg,var(--green-deep),var(--green-ink)); position:relative; overflow:hidden; }
+.res .top.alt{ background:linear-gradient(140deg,#2a7d3a,#1c5a2c); }
+.res .top.alt2{ background:linear-gradient(140deg,#3a8b44,#236b2e); }
+.res .top .mk{ position:absolute; right:-20px; bottom:-30px; width:150px; opacity:.18; }
+.res .top .kt{ position:absolute; left:22px; top:20px; font-size:11.5px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--leaf-2); }
+.res .bd{ padding:24px; flex:1; display:flex; flex-direction:column; }
+.res .bd h4{ font-size:19px; line-height:1.25; }
+.res .bd .lm{ margin-top:auto; padding-top:18px; font-size:14px; font-weight:800; color:var(--green); display:inline-flex; align-items:center; gap:7px; }
+.res .bd .lm .arr{ transition:transform .2s; }
+.res:hover .bd .lm .arr{ transform:translateX(4px); }
+
+/* recap download band */
+.recap{ background:var(--green); color:#fff; }
+.recap .grid{ display:grid; grid-template-columns:1fr .8fr; gap:50px; align-items:center; }
+.recap h2{ color:#fff; font-size:clamp(30px,4.2vw,46px); max-width:16ch; }
+.recap p{ color:#e7f4e1; font-size:17.5px; margin-top:20px; max-width:52ch; line-height:1.6; }
+.recap .dl{ margin-top:30px; }
+.recap .cover{ background:linear-gradient(160deg,#14401f,#0d3017); border-radius:18px; box-shadow:0 30px 70px -30px rgba(8,30,16,.7); padding:38px 34px; transform:rotate(2deg); border:1px solid rgba(255,255,255,.14); }
+.recap .cover .kt{ font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); }
+.recap .cover h3{ color:#fff; font-size:30px; margin-top:14px; line-height:1.1; }
+.recap .cover .mk{ width:54px; margin-top:26px; opacity:.9; }
+.recap .cover .meta{ margin-top:22px; font-size:13px; color:#bcd3a8; border-top:1px solid rgba(255,255,255,.16); padding-top:16px; }
+
+/* contact CTA */
+.contact{ background:var(--paper-2); }
+.contact .card{ background:#fff; border:1px solid var(--line); border-radius:28px; box-shadow:var(--shadow); padding:56px 54px; text-align:center; position:relative; overflow:hidden; }
+.contact .card::before{ content:""; position:absolute; right:-50px; top:-50px; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle,rgba(140,198,63,.18),transparent 70%); }
+.contact .card .mk{ width:58px; margin:0 auto 22px; position:relative; z-index:2; }
+.contact h2{ font-size:clamp(28px,4vw,44px); max-width:20ch; margin:0 auto; position:relative; z-index:2; }
+.contact p{ font-size:18px; color:var(--body); max-width:54ch; margin:18px auto 0; position:relative; z-index:2; }
+.contact .cc{ margin-top:32px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; position:relative; z-index:2; }
+.contact .micro{ margin-top:22px; font-size:13.5px; color:var(--body-dim); position:relative; z-index:2; }
+
+/* footer */
+.foot{ background:var(--green-ink); color:#9cbd8c; padding:56px 0 34px; }
+.foot .top{ display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; }
+.foot .bk img{ height:40px; filter:brightness(0) invert(1); }
+.foot .bk p{ margin-top:16px; font-size:14px; color:#9cbd8c; max-width:34ch; }
+.foot .cols{ display:flex; gap:60px; flex-wrap:wrap; }
+.foot .col h5{ color:#dff0bf; font-size:13px; text-transform:uppercase; letter-spacing:.1em; margin-bottom:14px; font-weight:800; }
+.foot .col a{ display:block; color:#bcd3a8; font-size:14.5px; margin-bottom:9px; font-weight:500; }
+.foot .col a:hover{ color:#fff; }
+.foot .fine{ margin-top:38px; border-top:1px solid rgba(255,255,255,.12); padding-top:22px; font-size:12.5px; color:#7ba06a; line-height:1.6; }
+
+@media(max-width:980px){
+  .nav .menu{ display:none; }
+  .hl-grid{ grid-template-columns:repeat(2,1fr); }
+  .hl:nth-child(2){ border-right:none; }
+  .dgrid{ grid-template-columns:1fr; gap:34px; }
+  .dgrid.rev .copy{ order:0; }
+  .rescards{ grid-template-columns:1fr; }
+  .recap .grid{ grid-template-columns:1fr; }
+  .statpair{ grid-template-columns:repeat(3,1fr); }
+}
+@media(max-width:560px){
+  body{ font-size:17px; }
+  .wrap{ padding:0 22px; }
+  .dsec{ padding:64px 0; }
+  .hl-grid{ grid-template-columns:1fr; }
+  .hl{ border-right:none; border-bottom:1px solid var(--line-2); }
+  .statpair{ grid-template-columns:1fr; }
+  .contact .card{ padding:40px 26px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="row">
+    <a class="brand" href="#top"><img src="assets/canopy-logo.png" alt="Canopy Management" /></a>
+    <nav class="menu">
+      <a href="#highlights">Prime Day Tracker</a>
+      <a href="#spend">Insights</a>
+      <a href="#resources">Resources</a>
+      <a href="#recap">Reports</a>
+    </nav>
+    <div class="right">
+      <a class="btn btn-green" href="https://canopymanagement.com/contact-us/" target="_blank" rel="noopener">Book a Call <span class="arr">→</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="top">
+  <div class="arch">
+    <img class="mk" src="assets/canopy-mark.png" alt="" aria-hidden="true" />
+    <div class="tagpill"><span class="d"></span> Amazon Prime Day · Live Read</div>
+  </div>
+  <div class="htext">
+    <h1 class="reveal">PRIME DAY</h1>
+    <div class="sub reveal d1"><span class="line"></span> Live Tracker 2026 · Ended <span class="line"></span></div>
+    <p class="lead reveal d2">Canopy Management's Amazon Prime Day Tracker compiled a live look across our seller data and verified-shopper surveys to bring immediate insight into what happened on Prime Day. Our 2026 tracker ran from <b>June 23 through June 26</b>. All insights shared represent an early read and are subject to change.</p>
+    <div class="hcta reveal d2">
+      <a class="btn btn-gold" href="https://canopymanagement.com/contact-us/" target="_blank" rel="noopener">Get your Prime Day game plan <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="#highlights">See the 2026 numbers</a>
+    </div>
+    <div class="pillrow reveal d3">
+      <div class="pillshape"><span class="lab">2026 Early Read</span><span class="gold"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HIGHLIGHTS ===================== -->
+<section class="highlights" id="highlights">
+  <div class="wrap">
+    <div class="hl-card-wrap reveal">
+      <div class="hl-grid">
+        <div class="hl"><div class="n" data-count="47.66" data-prefix="$" data-dec="2">$0</div><div class="l">Average order size</div><div class="s">down from $53.34 in 2025</div></div>
+        <div class="hl"><div class="n" data-count="143.45" data-prefix="$" data-dec="2">$0</div><div class="l">Average household spend</div><div class="s">down from $156.37 in 2025</div></div>
+        <div class="hl"><div class="n" data-count="69" data-suffix="%">0</div><div class="l">Items purchased under $20</div><div class="s">just 3% sold above $100</div></div>
+        <div class="hl"><div class="n" data-count="5000" data-suffix="+">0</div><div class="l">Verified buyers surveyed</div><div class="s">Total Commerce Panel + Verified Voices</div></div>
+      </div>
+    </div>
+    <p class="hl-note reveal d1">2026 Prime Day highlights · Source: Numerator Prime Day Tracker (Jun 23-26, 2026), presented by Canopy Management</p>
+  </div>
+</section>
+
+<!-- ===================== SPEND ===================== -->
+<section class="dsec" id="spend">
+  <div class="wrap">
+    <div class="dgrid">
+      <div class="copy reveal">
+        <div class="eyebrow"><span class="dot"></span> Spending</div>
+        <h2>How much did shoppers spend on Prime Day 2026?</h2>
+        <p>The average Prime Day 2026 order size was <b>$47.66</b>, down from $53.34 in last year's early read. Nearly two-thirds <b>(63%)</b> of households shopping the event placed two or more separate orders, bringing average household spend to approximately <b>$143.45</b>, down from $156.37 last year.</p>
+        <p class="src">Source: Numerator Prime Day Tracker, 2026 early read.</p>
+      </div>
+      <div class="viz reveal d1">
+        <div class="cmp">
+          <div class="ct"><span>Average order size</span><span class="down">▼ 10.6% vs 2025</span></div>
+          <div class="bar now"><span class="yr">2026</span><div class="track"><div class="fill" data-w="89"><span class="v">$47.66</span></div></div></div>
+          <div class="bar prev"><span class="yr">2025</span><div class="track"><div class="fill" data-w="100"><span class="v">$53.34</span></div></div></div>
+        </div>
+        <div class="cmp">
+          <div class="ct"><span>Average household spend</span><span class="down">▼ 8.3% vs 2025</span></div>
+          <div class="bar now"><span class="yr">2026</span><div class="track"><div class="fill" data-w="92"><span class="v">$143.45</span></div></div></div>
+          <div class="bar prev"><span class="yr">2025</span><div class="track"><div class="fill" data-w="100"><span class="v">$156.37</span></div></div></div>
+        </div>
+        <div class="bigstat">
+          <div class="b"><div class="n" data-count="63" data-suffix="%">0</div><div class="l">of households placed 2+ separate orders</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHAT THEY BOUGHT ===================== -->
+<section class="dsec tint" id="bought">
+  <div class="wrap">
+    <div class="dgrid rev">
+      <div class="copy reveal d1">
+        <div class="eyebrow"><span class="dot"></span> Product purchases</div>
+        <h2>What did people buy on Prime Day 2026?</h2>
+        <p>The top-selling items were <b>Premier Protein Shakes</b>, <b>Liquid I.V. Packets</b>, and <b>Temptations Cat Treats</b>. Over two-thirds <b>(69%)</b> of items sold for under $20, while just 3% were priced above $100, for an average spend of <b>$23.23 per item</b>, down from $24.59 last year. The most common categories were apparel &amp; shoes, household essentials, and health &amp; wellness. Nearly half of shoppers bought an item they had been waiting to grab until it went on sale.</p>
+      </div>
+      <div class="viz reveal">
+        <ol class="toplist">
+          <li><span class="rk">1</span><span class="nm">Premier Protein Shakes</span></li>
+          <li><span class="rk">2</span><span class="nm">Liquid I.V. Packets</span></li>
+          <li><span class="rk">3</span><span class="nm">Temptations Cat Treats</span></li>
+        </ol>
+        <div class="dist" style="margin-top:26px">
+          <div class="row"><span class="lab">Under $20</span><div class="track"><div class="fill" data-w="69"></div></div><span class="pct">69%</span></div>
+          <div class="row"><span class="lab">$20 to $100</span><div class="track"><div class="fill" data-w="28"></div></div><span class="pct">28%</span></div>
+          <div class="row"><span class="lab">Over $100</span><div class="track"><div class="fill" data-w="3"></div></div><span class="pct">3%</span></div>
+        </div>
+        <div class="chips"><span class="chip">Apparel &amp; Shoes</span><span class="chip">Household Essentials</span><span class="chip">Health &amp; Wellness</span></div>
+        <div class="bigstat">
+          <div class="b"><div class="n" data-count="23.23" data-prefix="$" data-dec="2">$0</div><div class="l">average spend per item (from $24.59)</div></div>
+          <div class="b"><div class="n" data-count="49" data-suffix="%">0</div><div class="l">bought an item they waited for a sale on</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHO SHOPPED ===================== -->
+<section class="dsec" id="who">
+  <div class="wrap">
+    <div class="dgrid">
+      <div class="copy reveal">
+        <div class="eyebrow"><span class="dot"></span> Shopper demographics</div>
+        <h2>Who shopped on Prime Day 2026?</h2>
+        <p>The typical observed Prime Day shopper was a <b>high-income, suburban woman aged 45 to 64</b>. Nearly all shoppers who placed an order were aware it was Prime Day before buying, and about a third cited the event itself as their primary reason for shopping. Prime Day continued to attract returning participants, with <b>89%</b> reporting they had shopped the event in previous years.</p>
+      </div>
+      <div class="reveal d1">
+        <div class="persona" style="margin-bottom:20px">
+          <div class="who">The typical 2026 Prime Day shopper</div>
+          <h3>High-income, suburban woman, 45 to 64</h3>
+          <div class="traits"><span>Suburban</span><span>High income</span><span>Woman</span><span>Age 45-64</span></div>
+        </div>
+        <div class="statpair">
+          <div class="sp"><div class="n" data-count="89" data-suffix="%">0</div><div class="l">returning shoppers</div></div>
+          <div class="sp"><div class="n" data-count="33" data-suffix="%">0</div><div class="l">shopped because of the event</div></div>
+          <div class="sp"><div class="n" data-count="98" data-suffix="%">0</div><div class="l">aware it was Prime Day</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SATISFACTION ===================== -->
+<section class="dsec tint" id="satisfaction">
+  <div class="wrap">
+    <div class="dgrid rev">
+      <div class="copy reveal d1">
+        <div class="eyebrow"><span class="dot"></span> Shopper satisfaction</div>
+        <h2>What did shoppers think of the deals?</h2>
+        <p>Over half of Prime Day shoppers <b>(59%)</b> reported high satisfaction with the deals, down from two-thirds (68%) last year. More than half compared prices across retailers before buying. Shoppers also engaged with competing promotions: <b>49%</b> shopped or planned to shop Walmart Deals, and <b>32%</b> shopped or planned to shop Target Circle Deal Days.</p>
+      </div>
+      <div class="viz reveal">
+        <div class="donutwrap">
+          <div class="donut" data-p="59"><div class="c"><div class="n" data-count="59" data-suffix="%">0%</div><div class="l">High satisfaction</div></div></div>
+          <div style="flex:1; min-width:180px">
+            <div class="bigstat" style="margin-top:0"><div class="b"><div class="n">68%</div><div class="l">high satisfaction last year (2025)</div></div></div>
+            <p style="font-size:14.5px; color:var(--body); margin-top:14px">More than <b>half</b> compared prices across retailers before completing a purchase.</p>
+          </div>
+        </div>
+        <div class="compete" style="margin-top:26px">
+          <div class="r"><span class="nm">Walmart Deals</span><div class="track"><div class="fill" data-w="49"></div></div><span class="pct">49%</span></div>
+          <div class="r"><span class="nm">Target Circle</span><div class="track"><div class="fill" data-w="32"></div></div><span class="pct">32%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MID CTA (replaces Numerator related-report band w/ Canopy) ===================== -->
+<section class="dsec" id="resources">
+  <div class="wrap">
+    <div class="sec-center reveal">
+      <h2>Turn these numbers into your next Prime Day win.</h2>
+      <p>Prime Day is won in the weeks before it starts. Here is how Canopy helps Amazon brands prepare, launch, and capture the spike.</p>
+    </div>
+    <div class="rescards">
+      <a class="res reveal d1" href="https://canopymanagement.com/contact-us/" target="_blank" rel="noopener">
+        <div class="top"><span class="kt">Playbook</span><img class="mk" src="assets/canopy-mark.png" alt="" /></div>
+        <div class="bd"><h4>The Prime Day Seller Readiness Plan</h4><span class="lm">Learn more <span class="arr">→</span></span></div>
+      </a>
+      <a class="res reveal d2" href="https://canopymanagement.com/contact-us/" target="_blank" rel="noopener">
+        <div class="top alt"><span class="kt">Strategy</span><img class="mk" src="assets/canopy-mark.png" alt="" /></div>
+        <div class="bd"><h4>Pricing &amp; Deal Strategy for Digital Sales Events</h4><span class="lm">Learn more <span class="arr">→</span></span></div>
+      </a>
+      <a class="res reveal d3" href="https://canopymanagement.com/contact-us/" target="_blank" rel="noopener">
+        <div class="top alt2"><span class="kt">Recap</span><img class="mk" src="assets/canopy-mark.png" alt="" /></div>
+        <div class="bd"><h4>Post-Prime Day: How to Hold Your Rank Gains</h4><span class="lm">Learn more <span class="arr">→</span></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RECAP DOWNLOAD ===================== -->
+<section class="dsec recap" id="recap">
+  <div class="wrap">
+    <div class="grid">
+      <div class="reveal">
+        <div class="eyebrow" style="color:#dff0bf"><span class="dot"></span> Free report</div>
+        <h2>The Canopy Prime Day Seller Playbook</h2>
+        <p>Built from observed purchase behavior across our seller portfolio and Verified Voices survey insights from over <b>5,000 verified Prime Day shoppers</b>. See who shopped, which categories grew the most, what shoppers thought of the deals, and exactly how to position your listings for the next event.</p>
+        <div class="dl">
+          <a class="btn btn-gold" href="https://canopymanagement.com/contact-us/" target="_blank" rel="noopener">Download now <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <div class="cover">
+          <div class="kt">Seller Playbook · 2026</div>
+          <h3>Prime Day Recap &amp; Seller Game Plan</h3>
+          <img class="mk" src="assets/canopy-logo-white.png" alt="Canopy Management" style="width:150px" />
+          <div class="meta">5,000+ verified shoppers · category growth · deal sentiment · year-over-year</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT CTA ===================== -->
+<section class="dsec contact" id="contact">
+  <div class="wrap">
+    <div class="card reveal">
+      <img class="mk" src="assets/canopy-mark.png" alt="Canopy mark" />
+      <h2>Reach out for custom Prime Day insights.</h2>
+      <p>Want a read on your category, your competitors, and where your brand is leaving money on the table this event season? A Canopy strategist will get back to you within 24 hours.</p>
+      <div class="cc">
+        <a class="btn btn-deep" href="https://canopymanagement.com/contact-us/" target="_blank" rel="noopener">Talk to a strategist <span class="arr">→</span></a>
+        <a class="btn btn-cream" style="border:1px solid var(--line)" href="https://canopymanagement.com/contact-us/" target="_blank" rel="noopener">Get a free account audit</a>
+      </div>
+      <p class="micro">Results focused. Performance based. · $3.2B+ managed · 1,000+ brands · 99.1% partner retention</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="top">
+      <div class="bk">
+        <img src="assets/canopy-logo.png" alt="Canopy Management" />
+        <p>Full-service growth for Amazon, Walmart, and Shopify brands. Results focused. Performance based.</p>
+      </div>
+      <div class="cols">
+        <div class="col"><h5>Solutions</h5>
+          <a href="https://canopymanagement.com/" target="_blank" rel="noopener">Amazon Management</a>
+          <a href="https://canopymanagement.com/" target="_blank" rel="noopener">PPC &amp; DSP</a>
+          <a href="https://canopymanagement.com/" target="_blank" rel="noopener">Creative &amp; Listings</a>
+          <a href="https://canopymanagement.com/" target="_blank" rel="noopener">Walmart &amp; Shopify</a>
+        </div>
+        <div class="col"><h5>Resources</h5>
+          <a href="https://canopymanagement.com/case-studies/" target="_blank" rel="noopener">Case Studies</a>
+          <a href="https://canopymanagement.com/" target="_blank" rel="noopener">Blog</a>
+          <a href="#recap">Prime Day Report</a>
+        </div>
+        <div class="col"><h5>Company</h5>
+          <a href="https://canopymanagement.com/" target="_blank" rel="noopener">About</a>
+          <a href="https://canopymanagement.com/contact-us/" target="_blank" rel="noopener">Contact</a>
+          <a href="https://canopymanagement.com/contact-us/" target="_blank" rel="noopener">Book a Call</a>
+        </div>
+      </div>
+    </div>
+    <div class="fine">
+      Prime Day data presented here is sourced from the Numerator Prime Day Tracker (June 23-26, 2026) and is shown for informational purposes. ©Canopy Management. All rights reserved. Named Inc. 500 #325 fastest-growing private company.
+    </div>
+  </div>
+</footer>
+
+<script>
+/* reveal on scroll */
+const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12, rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* nav shadow on scroll */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled', scrollY>10),{passive:true});
+
+/* count up */
+function countUp(el){
+  const t=parseFloat(el.dataset.count), dec=parseInt(el.dataset.dec||'0');
+  const pre=el.dataset.prefix||'', suf=el.dataset.suffix||'', dur=1500, s=performance.now();
+  function tick(n){const p=Math.min((n-s)/dur,1), e=1-Math.pow(1-p,3), v=(t*e);
+    el.textContent=pre+v.toLocaleString(undefined,{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;
+    if(p<1)requestAnimationFrame(tick);}
+  requestAnimationFrame(tick);
+}
+/* bar/donut fills */
+function fillViz(scope){
+  scope.querySelectorAll('.bar .fill,[class*="track"] .fill').forEach(f=>{ if(f.dataset.w) f.style.width=f.dataset.w+'%'; });
+}
+const cio=new IntersectionObserver((es)=>{es.forEach(e=>{ if(e.isIntersecting){
+  e.target.querySelectorAll('[data-count]').forEach(countUp);
+  e.target.querySelectorAll('.fill[data-w]').forEach(f=>f.style.width=f.dataset.w+'%');
+  cio.unobserve(e.target);
+}})},{threshold:.4});
+document.querySelectorAll('.hl-card-wrap,.viz,.statpair,.bigstat,.dist,.compete').forEach(el=>cio.observe(el));
+/* standalone donut count + any stray counters */
+const sio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){countUp(e.target);sio.unobserve(e.target);}})},{threshold:.6});
+document.querySelectorAll('.donut [data-count]').forEach(el=>sio.observe(el));
+</script>
+</body>
+</html>
